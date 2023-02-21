@@ -1,0 +1,34 @@
+def my_function():
+    print("Witaj świecie!")
+
+
+my_function()
+
+d = 2 + 3
+e = 8 - 3
+
+print(d, e)
+print(4 / 2)
+print(3 / 2)
+
+f = 5 * 3
+print(f)
+
+print(3 < 2)
+print(3 != 4)
+
+g = 3 ** 5
+h: float = 9 ** (1 / 2)
+
+print(g, ", ", h)
+
+
+def my_function2() -> object:
+    a = 2.5
+    b = 3
+    c = 6
+
+    print(a * c, b / b, b-c)
+
+
+my_function2()
