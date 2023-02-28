@@ -1,0 +1,140 @@
+#1a
+lista1 = [[] for i in range(3)]
+a = 3 #int(input())
+b = 2 #int(input())
+c = 1 #int(input())
+
+lista1[0].append(a)
+lista1[1].append(b)
+lista1[2].append(c)
+
+lista2 = [[1], [5]]
+
+print(lista1)
+
+lista1.extend(lista2)
+
+print(lista1);
+
+litery = ['a', 'b', 'c']
+print(litery)
+litery.insert(3, 'd')
+print(litery)
+
+litery.remove('b')
+print(litery)
+
+removed = lista1.pop(2)
+print(lista1)
+print(removed)
+
+
+#print(lista1.clear())
+
+print(litery.index('a'))
+
+print('Ile jest: ',litery.count('a'))
+
+lista = [1, 3, 6, 4, 6, 3, 2]
+
+lista.sort()
+
+print(lista)
+
+lista.reverse()
+
+print(lista)
+
+listacopy = lista.copy()
+print(listacopy)
+
+
+#1b
+import math
+listpot = [[] for i in range(15)]
+for i in range(0, 15):
+    listpot[i].append(i**5)
+
+print(listpot)
+
+listsilnia = [[] for i in range(20)]
+for i in range(1, 21):
+    listsilnia[i-1].append(math.factorial(i))
+
+print(listsilnia)
+
+liste = [[] for i in range(20)]
+for i in range(20):
+    liste[i].append(math.exp(i))
+
+print(liste)
+
+listnazw = ['Dawid', 'Nowakowski', 'Cott', 'Problem']
+listnazwdl = [[] for i in range(len(listnazw))]
+for i in range(len(listnazw)):
+    listnazwdl[i].append(len(listnazw[i]))
+
+print(listnazwdl)
+
+#1c
+
+list1=[1,2,3,4,5,6,7,8,9,10]
+list2=[10,20,30,40,50,60,70,80,90,100]
+
+#list3=array([1,2,3,4,5,6,7,8,9,10])
+#list4=array([10,20,30,40,50,60,70,80,90,100])
+
+print(list1 + list2)
+#print(list3 + list4)
+
+listmies1 = ['czerwiec', 'lipiec', 'maj',  'pazdziernik', 'styczen', 'listopad', 'grudzien', 'sierpien', 'wrzesien',]
+listmies2 = ['czerwiec', 'lipiec', 'maj',  'pazdziernik', 'styczen']
+def numer(month_name):
+    mon = {'styczen' : 1,
+           'luty' : 2,
+           'marzec' : 3,
+           'kwiecien': 4,
+           'maj': 5,
+           'czerwiec': 6,
+           'lipiec': 7,
+           'sierpien': 8,
+           'wrzesien': 9,
+           'pazdziernik': 10,
+           'listopad': 11,
+           'grudzien': 12}
+    return mon.get(month_name)
+listmies1.sort(key=numer)
+
+print(listmies1)
+
+nazwiska = ('Dawid', 'Nowak', 'Cott', 'Zdych', 'Niemiec', 'Polak', 'Kowalski', 'Choroski', 'Kononowicz')
+litera = 'D'
+
+
+def foo(nazwiska, litera):
+    wynik = [x for x in nazwiska if litera<x[0]]
+
+    print(wynik)
+
+foo(nazwiska, litera)
+
+def foo2(nazwiska):
+    wynik = [x for x in nazwiska if len(x)>6]
+
+    print(wynik)
+
+foo2(nazwiska)
+
+
+ciag=[1,2,3,4,5,6,7,8,9,10]
+def foo3(ciag):
+    wynik = [x**3 for x in ciag]
+
+    print(ciag)
+    print(wynik)
+
+foo3(ciag)
+
+lista=[1,2,3,4,5,6,7,8,9,10]
+
+
