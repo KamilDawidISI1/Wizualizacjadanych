@@ -1,1 +1,134 @@
+import math
+from typing import List
+
+factorials = [math.factorial(i) for i in range(0, 20)]
+print("facotial = ", factorials)
+
+list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+list2 = [*range(10, 101, 10)]
+print(list1 + list2)
+
+
+def calendar(m):
+    months = ["Styczen", "Luty", "Marzec", "Kwiecien", "Maj", "Lipiec", "Sierpien", "Wrzesien", "Pazdziernik",
+              "Listopad", "Grudzien"]
+    return months.index(m) + 1
+
+
+my_months: list[str] = ["Maj", "Styczen", "Grudzien"]
+my_months.sort(key=calendar)
+print(my_months)
+a = [2, 1, 4, 3]
+print(a.sort)
+print(a)
+print(sorted(a, reverse=True))
+
+
+def chooseName(list, letter):
+    return [x for x in list if x[0] > letter]
+
+
+listnames = ["Kowalski", "Lewandowski", "Zbojnik", "Dawid", "Wisniewski", "Kowalczyk", "Markowski"]
+
+print("Names after L: ", chooseName(listnames, "L"))
+
+
+def chooseLenght(list, len=6):
+    return [x for x in list in len(x) > len]
+
+
+def func_power(list, pow=3):
+    return [x ** pow for x in list]
+
+
+print(func_power([1, 2, 3, 4, 5]))
+print(func_power([1, 2, 3, 4, 5], 4))
+
+
+def func(list, n1, n2):
+    return [x if x != n1 else n2 for x in list]
+
+
+print(func([1, 2, 3, 4, 5, 2, 5], 2, 3))
+
+
+def func1(list, n1, n2, rel_tol=1e-09, abs_tol=0):
+    return [x if (math.isclose(x, n1, rel_tol=rel_tol, abs_tol=abs_tol) == 0) else n2 for x in list]
+
+
+print(func1([1, 3, 7, 5, 3, 5, 2], 2.5, 10, abs_tol=1))
+
+#zad2
+
+panstwa = {"Polska", "Niemcy", "Afganistan", "USA", "Wlochy"}
+print(panstwa)
+if "Polska" in panstwa:
+    print("Polska jest w zbiorze")
+
+panstwa.add("Polska")
+print(panstwa)
+panstwa.remove("Niemcy")
+print(panstwa)
+
+a=3.2
+
+krotka = ("slowo", 5, True, a, [12,13], 4+2j, {3,5})
+
+print(krotka)
+print(krotka[2])
+print(krotka[3:6:])
+
+def func4(lista):
+    for x in set(lista):
+        print(x, end=' ')
+    print("\n")
+
+def func5(lista):
+    new_list=[]
+    for x in lista:
+        if x not in new_list:
+            new_list.append(x)
+    print(new_list)
+
+
+lista = [1,1,2,2,3,3,4,4,5,5,6,6,7,7]
+func4(lista)
+func5(lista)
+
+phone_book = {'Anna': 2234, 'Bozena': 1234,  'Grzegorz': 4356}
+
+def print_phone_numbers(book):
+    for x, y in book.items():
+        print("{} ma numer {}".format(x,y))
+
+print_phone_numbers(phone_book)
+
+days = {'Mon': 'Pn', 'Tue': 'Wt', 'Wen': 'Sr', 'Thu': 'Czw', 'Fri': 'Pia', 'Sat': 'Sob', 'Sun': 'Niedz'}
+
+def eng_to_pl(edays):
+    pdays = []
+    for i in edays:
+        pdays.append(days[i])
+    return pdays
+
+def pl_to_eng(pdays):
+    edays = []
+    for i in pdays:
+        for a, b in days.items():
+            if i == b:
+                edays.append(a)
+    return edays
+print(eng_to_pl(['Tue', 'Thu', 'Mon']))
+print(pl_to_eng(["Wt", "Czw", 'Pn']))
+
+def func_palindrom(w):
+    w = w.replace(" ", "").lower()
+    return w == w[-1::-1]
+
+print(func_palindrom('owocowo'))
+print(func_palindrom('Ala ma kota'))
+
+
+--------------------------------------------------------------------
+
 
