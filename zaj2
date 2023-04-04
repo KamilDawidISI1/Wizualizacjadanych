@@ -89,3 +89,46 @@ else:
 
 txt = "My name is {0} . My date of birth is {1} .".format("Kamil", "28.01.2002")
 print(txt)
+
+
+names = ['michal', 'ola', 'nela', 'przemek']
+
+
+def func_upper(list):
+    list_upper = []
+    for x in list:
+        list_upper.append(x.replace(x[0], x[0].upper()))
+    return list_upper
+
+
+print(names)
+print(func_upper(names))
+
+
+def only_l(list):
+    listl = []
+    for x in list:
+        if 'l' in x:
+            listl.append(x)
+    return listl
+
+
+print(only_l(names))
+
+
+def zenskie(list):
+    list_zenskie = []
+    for x in list:
+        if x[len(x)-1] == 'a':
+            list_zenskie.append(x)
+    return  list_zenskie
+
+print(zenskie(names))
+
+def sumdlugosc(list):
+    wynik = 0
+    for x in list:
+        wynik += len(x)
+    return wynik
+
+print(sumdlugosc(names))
