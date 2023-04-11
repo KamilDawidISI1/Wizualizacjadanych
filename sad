@@ -1,2 +1,32 @@
 = (('M', 1000), ('CM', 900), ('D', 500), ('CD', 400), ('C', 100), ('XC', 90), ('L', 50),
                              ('XL', 40), ('X', 10), ('IX', 9), ('V', 5), ('IV', 4), ('I', 1))
+class Roman:
+    def __init__(self, value):
+        self.value=value
+    def na_roman(self):
+        roman_numery = (('M', 1000), ('CM', 900), ('D', 500), ('CD', 400), ('C', 100), ('XC', 90), ('L', 50),
+                             ('XL', 40), ('X', 10), ('IX', 9), ('V', 5), ('IV', 4), ('I', 1))
+        num = self.value
+        wynik=''
+        while num>0:
+            for roman, i in roman_numery:
+                if num >= i:
+                    wynik += roman
+                    num -= i
+                    break
+            return wynik
+    def na_arab(self):
+        roman_numery= (('M', 1000), ('CM', 900), ('D', 500), ('CD', 400), ('C', 100), ('XC', 90), ('L', 50),
+                             ('XL', 40), ('X', 10), ('IX', 9), ('V', 5), ('IV', 4), ('I', 1))
+        roman_numery=self.value
+        i=wynik=0
+        while i < roman_numery:
+            for roman, i in roman_numery:
+                if roman_numery[i:i+len(roman)]==roman:
+                    wynik+=i
+                    i+=len(roman)
+                    break
+            return wynik
+
+a = Roman(3)
+print(a.na_roman())
