@@ -114,3 +114,7 @@ print("Stan mojego konta: {}".format(mojeKonto.balance))
 mojeKonto.salary_transfer()
 print("Po wyplacie\n")
 print("Stan mojego konta: {}".format(mojeKonto.balance))
+
+----------------------------------------------------------------------------------------
+zad3
+
