@@ -118,3 +118,106 @@ print("Stan mojego konta: {}".format(mojeKonto.balance))
 ----------------------------------------------------------------------------------------
 zad3
 
+(dużo pomógł chatGPT)
+
+class Romanian:
+    roman_numerals = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+    arabic_numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+
+    def __init__(self, value):
+        if isinstance(value, str):
+            self.value = self.roman_to_arabic(value)
+        elif isinstance(value, int):
+            self.value = value
+        else:
+            self.value = None
+
+    def __str__(self):
+        if self.value is None:
+            return "Invalid Roman numeral"
+        return self.arabic_to_roman(self.value)
+
+    def __int__(self):
+        if self.value is None:
+            return 0
+        return self.value
+
+    def __add__(self, other):
+        if isinstance(other, Romanian):
+            return Romanian(self.value + other.value)
+        elif isinstance(other, int):
+            return Romanian(self.value + other)
+        else:
+            return None
+
+    def __sub__(self, other):
+        if isinstance(other, Romanian):
+            return Romanian(self.value - other.value)
+        elif isinstance(other, int):
+            return Romanian(self.value - other)
+        else:
+            return None
+
+    def __mul__(self, other):
+        if isinstance(other, Romanian):
+            return Romanian(self.value * other.value)
+        elif isinstance(other, int):
+            return Romanian(self.value * other)
+        else:
+            return None
+
+    def arabic_to_roman(self, num):
+        if num < 1 or num > 3999:
+            return "Invalid Arabic numeral"
+        roman_num = ''
+        i = 0
+        while num > 0:
+            for _ in range(num // self.arabic_numbers[i]):
+                roman_num += self.roman_numerals[i]
+                num -= self.arabic_numbers[i]
+            i += 1
+        return roman_num
+
+    def roman_to_arabic(self, roman_num):
+        if not all(char in self.roman_numerals for char in roman_num):
+            return 0
+        arabic_num = 0
+        i = 0
+        while i < len(roman_num):
+            current_char = roman_num[i]
+            current_value = self.arabic_numbers[self.roman_numerals.index(current_char)]
+            if i+1 < len(roman_num):
+                next_char = roman_num[i+1]
+                next_value = self.arabic_numbers[self.roman_numerals.index(next_char)]
+                if current_value >= next_value:
+                    arabic_num += current_value
+                    i += 1
+                else:
+                    arabic_num += next_value - current_value
+                    i += 2
+            else:
+                arabic_num += current_value
+                i += 1
+        return arabic_num
+
+x = Romanian("III")
+y = Romanian(5)
+z = Romanian("MDCXIV")
+
+print(x) 
+print(y) 
+print(z) 
+print(int(x)) 
+print(int(z))
+print(str(y)) 
+print(x + y) 
+print(int(x + y))
+print(x-y)
+print(int((x-y)))
+print(x*2)
+print(int((x*2)))
+print(x*y)
+print(int((x*y)))
+print(x + y + z) 
+print(int(x + y + z))
+print(int(x + y + z))
