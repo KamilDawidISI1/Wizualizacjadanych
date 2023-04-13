@@ -168,7 +168,7 @@ class Romanian:
 
     def arabic_to_roman(self, num):
         if num < 1 or num > 3999:
-            return "Invalid Arabic numeral"
+            return "Liczby rzymskie nie sa ujemne ani wieksze od 3999"
         roman_num = ''
         i = 0
         while num > 0:
@@ -201,8 +201,8 @@ class Romanian:
         return arabic_num
 
 x = Romanian("III")
-y = Romanian(5)
-z = Romanian("MDCXIV")
+y = Romanian(3000)
+z = Romanian('D')
 
 print(x) 
 print(y) 
@@ -219,5 +219,4 @@ print(int((x*2)))
 print(x*y)
 print(int((x*y)))
 print(x + y + z) 
-print(int(x + y + z))
 print(int(x + y + z))
