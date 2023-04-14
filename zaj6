@@ -1,0 +1,124 @@
+#RPG
+
+class Hero:
+    def __init__(self, name, health=100, pot=0):
+        self.name = name
+        self.health = health
+        self.pot = pot
+
+        if self.health > 100:
+            self.health=100
+            print("Bohater nie może miec więcej niż 100% HP. Przypisano podstawowy poziom zdrowia.")
+
+    def received_damage(self, player_damage):
+        self.health -= player_damage
+        if self.health <= 0:
+            print("Twoja postac umarla. Zaplac 5634673 cebulionow by ja wskrzesic")
+        else:
+            print("Twoja postac otrzymala: "+str(player_damage)+" dmg i pozostalo jej: "+str(self.health)+" HP.")
+
+
+
+class Archer(Hero):
+    def __init__(self, name='Anon', health=100, pot=0, agility=0):
+        super().__init__(name, health, pot)
+        self.agility = agility
+
+    def power_of_attack(self):
+        damage = self.agility * self.pot * self.health / 100.0
+        return damage
+
+
+class Warrior(Hero):
+    def __init__(self, name='Ragnar', health=100, pot=0, strength=0):
+        super().__init__(name, health, pot)
+        self.strength = strength
+
+
+    def power_of_attack(self):
+        if self.health < 20:
+            damage = self.strength * self.pot * 1.5
+        else:
+            damage = self.strength * self.pot * (self.health) / 100.0
+        return damage
+
+Adrian = Archer('Adrian', pot=5, agility=5)
+Adrian2 = Archer(health=50, pot=5, agility=5)
+
+print(Adrian.power_of_attack())
+print(Adrian2.name)
+print(Adrian2.power_of_attack())
+
+
+Maciek = Warrior('MaciekKOX2007', health=19, pot=3, strength=10)
+Rysiek = Warrior(health=100, pot=4, strength=9)
+
+print(Maciek.name)
+print(Maciek.power_of_attack())
+print(Rysiek.name)
+print(Rysiek.power_of_attack())
+
+
+Adrian.received_damage(Maciek.power_of_attack())
+Adrian.received_damage(Maciek.power_of_attack())
+Adrian.received_damage(Maciek.power_of_attack())
+
+
+#-------------------------------------------------------------------------------------
+
+#Preson
+
+import datetime
+
+class Preson:
+    def __init__(self, imie, nazwisko, pesel):
+        self.imie = imie
+        self.nazwisko = nazwisko
+        self.pesel = pesel
+
+        mnozniki = [9,7,3,1,9,7,3,1,9,7]
+        s = sum(w * int(c) for w, c in zip(mnozniki, pesel))
+        if s%10 !=0:
+            print("Bledny numer PESEL")
+            self.imie = ''
+            self.nazwisko = ''
+            self.pesel=''
+            return
+
+        rok = int(pesel[0:2])
+        miesiac = int(pesel[2:4])
+        dzien = int(pesel[4:6])
+        plec = int(pesel[9])
+
+        if miesiac > 80 and miesiac < 93:
+            miesiac -= 80
+        elif miesiac > 20 and miesiac < 33:
+            miesiac -= 20
+        elif miesiac > 40 and miesiac < 53:
+            miesiac -= 40
+        elif miesiac > 60 and miesiac < 73:
+            miesiac -= 60
+
+        if plec % 2 ==0:
+            self.plec = 'Kobieta'
+            self.data_urodzenia = datetime.date(1900+rok, miesiac, dzien)
+        else:
+            self.plec = 'Mezczyzna'
+            self.data_urodzenia = datetime.date(2000+rok, miesiac, dzien)
+
+        self.wiek = (datetime.date.today()-self.data_urodzenia) // datetime.timedelta(days=365)
+
+    def wyswietlanie(self):
+        if self.imie == '':
+            print("Nie istnieje")
+            return
+        print("Imie: {}".format(self.imie))
+        print("Nazwisko: {}".format(self.nazwisko))
+        print("PESEL: {}".format(self.pesel))
+        print("Plec: {}".format(self.plec))
+        print("Data urodzenia: {}".format(self.data_urodzenia))
+        print("Wiek: {}".format(self.wiek))
+
+
+Ja = Preson('Kamil', 'Dawid', '02212803510')
+Ja.wyswietlanie()
