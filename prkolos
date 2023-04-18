@@ -1,0 +1,162 @@
+zad1
+
+import math
+
+def wypisz(lista):
+    for x in range(0, len(lista)):
+        print(lista[x])
+
+
+lista = [1, 2, 3, 4, 1, 2, 3, 1, 2, 4, 5, 6, 4, 5]
+
+wypisz(lista)
+print("\n")
+
+def unikalnosc(lista):
+    lista_unikalna=[]
+    for x in lista:
+        if x not in lista_unikalna:
+            lista_unikalna.append(x)
+
+    wypisz(lista_unikalna)
+
+unikalnosc(lista)
+
+zad2
+
+def co4odwrotnie(wyraz):
+    wynik="".join(x for x in wyraz if x.isalnum())
+    odwrocenie = wynik[::-4]
+    print(odwrocenie)
+
+
+
+
+a = "1234567890"
+
+co4odwrotnie(a)
+
+zad3
+
+import math
+
+#a
+def fib(n):
+    if n==0:
+        return 0
+    elif n==1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+print("10 liczba ciagu fib: "+str(fib(10)))
+
+#b
+
+def fib2(n):
+    if n==0:
+        return 0
+    elif n==1:
+        return 1
+    else:
+        a=0
+        b=1
+        for i in range(2, n+1):
+            c=a+b
+            a=b
+            b=c
+        return b
+
+print("10 liczba ciagu fib: "+str(fib2(10)))
+
+zad4
+
+def ntapotegawyrazow(*args, n):
+    for i in args:
+        print("{} do potegi {} = {}".format(i, n, i**n))
+
+
+
+ntapotegawyrazow(1,2,3,4,5, n=2)
+
+zad5
+
+words = ['apple', 'banana', 'pomergranate', 'plum', 'orange', 'melon', 'cherry', 'watermelon']
+
+word_word = [word for word in words if 'u' in word or 'o' in word]
+word_lengths = [len(word) for word in words if 'u' in word or 'o' in word]
+
+print(word_word)
+print(word_lengths)
+
+zad6
+
+import math
+
+def silnia(n):
+    if n==0:
+        return 1
+    else:
+        return n*silnia(n-1);
+
+
+def symbolN(n, k):
+    if k==n or k==0:
+        return 1
+    elif k>n:
+        return "k nie moze byc wieksze od n"
+    elif k<0 or n<0:
+        return "liczby nie moga byc ujemne"
+    else:
+        wynik = (silnia(n)) / (silnia(k) * silnia(n - k))
+        return wynik
+
+
+
+
+print(symbolN(5,-1))
+
+zad7
+
+class Polynomial:
+    def __init__(self, coef):
+        self.coef = coef
+
+    def __str__(self):
+        terms = []
+        for i in range(len(self.coef)):
+            if self.coef[i] != 0:
+                if i == 0:
+                    term = str(self.coef[i])
+                elif i == 1:
+                    term = f"{self.coef[i]}x"
+                else:
+                    term = f"{self.coef[i]}x^{i}"
+                terms.append(term)
+        if not terms:
+            return "0"
+        else:
+            return " + ".join(terms[::-1])
+
+
+    def __add__(self, other):
+        return Polynomial([self.coef[i] + other.coef[i] for i in range(len(self.coef))])
+
+    def __sub__(self, other):
+        return Polynomial([self.coef[i] - other.coef[i] for i in range(len(self.coef))])
+
+
+
+
+
+
+p1 = Polynomial([1, -3, 0, 2,0])
+p2 = Polynomial([0, 4, 2, 0,6])
+p3 = Polynomial([4,3,2,1,0])
+
+print(p1)
+print(p2)
+print(p1+p2)
+print(p1-p2)
+print(p1+p2-p3)
